@@ -105,7 +105,23 @@ public class CustomerService {
     }
 }
 ```
+### 4. SQL Equivalent — What Runs in the Database
 
+JPA turns `updateProfile` into a single `UPDATE` query that checks the version before saving:
+
+```sql
+UPDATE customers
+SET 
+    email = 'new@example.com',
+    phone = '555-0199',
+    version = version + 1   -- Bump version (1 -> 2)
+WHERE 
+    id = 101 
+    AND version = 1;        -- Check if version matches formVersion
+```
+
+* **1 row updated:** Success! Data is saved and version becomes `2`.
+* **0 rows updated:** Someone else saved first. Throws `ObjectOptimisticLockingFailureException`.
 ---
 
 ## Summary: When Should You Use It?

@@ -1,0 +1,6 @@
+{
+  "name": "Optimistic Locking Customer Backend",
+  "description": "100% backend REST API demonstrating Lost Update prevention with Optimistic Locking and versioned concurrency control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
